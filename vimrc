@@ -10,6 +10,11 @@ set tags=.git/tags;$HOME       " consider the repo tags first, then
                                " walk directory tree upto $HOME looking for tags
                                " note `;` sets the stop folder. :h file-search
 
+
+" Disable blinking
+autocmd GUIEnter * set vb t_vb= 
+autocmd VimEnter * set vb t_vb=
+
 set path=**
 
 set modeline
