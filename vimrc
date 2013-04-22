@@ -142,7 +142,7 @@ if has('gui_running')
   " Fonts
   " :set guifont=* " to launch a GUI dialog
   "set guifont=Terminus:h16
-  set guifont=DejaVu\ Sans\ Mono\ 11
+  set guifont=DejaVu\ Sans\ Mono\ 12
 endif
 
 " "}}}
