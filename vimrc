@@ -87,9 +87,6 @@ set wildmode=longest,list     " At command line, complete longest common string,
 set completeopt+=menuone      " Show matches even with single match.
 set completeopt+=preview      " Put extra information in the preview window.
 
-set novisualbell              " No blinking
-set noerrorbells              " No noise.
-
 " Disable blinking
 autocmd GUIEnter * set vb t_vb= 
 autocmd VimEnter * set vb t_vb=
