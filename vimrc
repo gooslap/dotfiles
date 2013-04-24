@@ -91,9 +91,8 @@ set novisualbell              " No blinking
 set noerrorbells              " No noise.
 
 " Disable blinking
-"autocmd GUIEnter * set vb t_vb= 
-"autocmd VimEnter * set vb t_vb=
-set vb t_vb= 
+autocmd GUIEnter * set vb t_vb= 
+autocmd VimEnter * set vb t_vb=
 
 set laststatus=2              " always show status line.
 set shortmess=atI             " shortens messages
