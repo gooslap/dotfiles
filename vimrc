@@ -4,17 +4,16 @@ let g:is_posix = 1             " vim's default is archaic bourne shell, bring it
 let mapleader = ','
 let maplocalleader = '	'      " Tab as a local leader
 
+set t_RV= 
+set ttymouse=xterm2            " Fix for the mysterious 'c' bug.
+
 set history=256                " Number of things to remember in history.
-set timeoutlen=250             " Time to wait after ESC (default causes an annoying delay)
-set clipboard+=unnamed         " Yanks go on clipboard instead.
-set pastetoggle=<F10>          " toggle between paste and normal: for 'safer' pasting from keyboard
 set shiftround                 " round indent to multiple of 'shiftwidth'
 
-"set tags=tags;$HOME 
-set path=**       " Search down for files, tags.
+set path=**                    " Search down for files, tags.
 
-set modeline
-set modelines=5                " default numbers of lines to read for modeline instructions
+"set modeline
+"set modelines=5                " default numbers of lines to read for modeline instructions
 
 set autoread
 
@@ -29,10 +28,6 @@ set incsearch                  " show matches while typing
 
 
 "#### Formatting ####
-set fo+=o                      " Automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
-set fo-=r                      " Do not automatically insert a comment leader after an enter
-set fo-=t                      " Do no auto-wrap text using textwidth (does not apply to comments)
-
 set nowrap
 set textwidth=0                " Don't wrap lines by default
 
@@ -51,18 +46,21 @@ set cindent
 set indentkeys-=0#            " do not break indent on #
 set cinkeys-=0#
 set cinoptions=:s,ps,ts,cs
-set cinwords=if,else,while,do
-set cinwords+=for,switch,case
 
 "#### Visual ####
 
-" Switch syntax highlighting on when the terminal has colors.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
+set t_Co=256
+syntax on
+
+if has('gui_running')
+  colorscheme desert
+else
+  colorscheme elflord
 endif
+
 "colorscheme blue
 "colorscheme darkblue
-colorscheme desert
+"colorscheme desert
 "colorscheme elflord
 "colorscheme evening
 "colorscheme koehler
@@ -88,7 +86,6 @@ set completeopt+=menuone      " Show matches even with single match.
 set completeopt+=preview      " Put extra information in the preview window.
 
 " Disable blinking
-autocmd GUIEnter * set vb t_vb= 
 autocmd VimEnter * set vb t_vb=
 
 set laststatus=2              " always show status line.
@@ -110,19 +107,13 @@ set foldopen+=quickfix
 
 set virtualedit=block
 
-"set splitbelow
-"set splitright
-
 set listchars=tab:\ ·,eol:¬
 set listchars+=trail:·
 set listchars+=extends:»,precedes:«
-map <silent> <F12> :set invlist<CR>
+map <silent> <leader>i :set invlist<CR>
 
 if has('gui_running')
   set guioptions=cMg " console dialogs, do not show menu and toolbar
-  " Fonts
-  " :set guifont=* " to launch a GUI dialog
-  "set guifont=Terminus:h16
   set guifont=DejaVu\ Sans\ Mono\ 10
 endif
 
@@ -157,7 +148,6 @@ nmap <silent> <C-h> <C-W><C-h>
 nmap <silent> <C-l> <C-W><C-l>
 
 " Window management
-nnoremap <leader>v :vnew<CR>
 nnoremap <leader>q :hide<CR>
 
 " Show active buffers
@@ -166,14 +156,14 @@ nnoremap <leader>b :ls<CR>
 "#### Plugins ####
 
 " Initialize Vundle
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+"filetype off
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+"Bundle 'gmarik/vundle'
 
 " Snippets
-Bundle 'msanders/snipmate.vim'
-Bundle 'honza/vim-snippets'
+"Bundle 'msanders/snipmate.vim'
+"Bundle 'honza/vim-snippets'
 
 " Git integration
 "Bundle 'tpope/vim-git'
@@ -185,15 +175,15 @@ Bundle 'honza/vim-snippets'
 "inoremap <leader>C <Esc><leader>C
 "inoremap <leader>S <Esc><leader>S
 
-Bundle 'sjl/gundo.vim'
+"Bundle 'sjl/gundo.vim'
 
-Bundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_leader_key='<LocalLeader>'
+"Bundle 'Lokaltog/vim-easymotion'
+"let g:EasyMotion_leader_key='<LocalLeader>'
 
-Bundle 'scrooloose/nerdtree'
-Bundle 'rstacruz/sparkup.git', {'rtp': 'vim/'}
+"Bundle 'scrooloose/nerdtree'
+"Bundle 'rstacruz/sparkup.git', {'rtp': 'vim/'}
 "let g:sparkupExecuteMapping = '<c-e>'
 "let g:sparkupNextMapping = '<c-ee>'
 
-filetype plugin indent on      " Automatically detect file types.
+"filetype plugin indent on      " Automatically detect file types.
 
