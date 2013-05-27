@@ -107,19 +107,27 @@ set foldopen+=quickfix
 
 set virtualedit=block
 
-set listchars=tab:\ ·,eol:¬
-set listchars+=trail:·
-set listchars+=extends:»,precedes:«
-map <silent> <leader>i :set invlist<CR>
 
 if has('gui_running')
+  if has("gui_gtk2")
+    set guifont=DejaVu\ Sans\ Mono\ 10
+  elseif has("gui_win32")
+    set guifont=Consolas:h12:cANSI
+  endif
   set guioptions=cMg " console dialogs, do not show menu and toolbar
-  set guifont=DejaVu\ Sans\ Mono\ 10
 endif
 
 
 "#### Key Mappings ####
-nnoremap <leader>rs :source ~/.vimrc<CR>
+
+" Toggle display of newlines and tabs
+map <silent> <leader>i :set invlist<CR>
+
+if has("win32")
+  nnoremap <leader>rs :source ~/_vimrc<CR>
+else
+  nnoremap <leader>rs :source ~/.vimrc<CR>
+endif
 
 " Esc
 noremap <leader><leader> <Esc>
