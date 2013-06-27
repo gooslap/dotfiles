@@ -53,27 +53,11 @@ set t_Co=256
 syntax on
 
 if has('gui_running')
-  colorscheme desert
+  colorscheme default
 else
-  colorscheme elflord
+  colorscheme default
 endif
 
-"colorscheme blue
-"colorscheme darkblue
-"colorscheme desert
-"colorscheme elflord
-"colorscheme evening
-"colorscheme koehler
-"colorscheme morning
-"colorscheme murphy
-"colorscheme pablo
-"colorscheme peachpuff
-"colorscheme ron
-"colorscheme shine
-"colorscheme torte
-"colorscheme zellner
-
-set number                    " line numbers On
 set showmatch                 " Show matching brackets.
 set matchtime=2               " Bracket blinking.
 
@@ -119,6 +103,10 @@ endif
 
 " Toggle display of newlines and tabs
 map <silent> <leader>i :set invlist<CR>
+
+" Toggle display of numbers
+set nonumber
+nnoremap <leader>n :set nonumber!<CR>
 
 if has("win32")
   nnoremap <leader>rs :source ~/_vimrc<CR>
