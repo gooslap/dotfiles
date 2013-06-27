@@ -31,9 +31,9 @@ set incsearch                  " show matches while typing
 set nowrap
 set textwidth=0                " Don't wrap lines by default
 
-set tabstop=2                  " tab size eql 2 spaces
-set softtabstop=2
-set shiftwidth=2               " default shift width for indents
+set tabstop=4                  " tab size eql 2 spaces
+set softtabstop=4
+set shiftwidth=4               " default shift width for indents
 set expandtab                  " replace tabs with ${tabstop} spaces
 set smarttab                   
 
