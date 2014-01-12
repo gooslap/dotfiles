@@ -2,7 +2,6 @@ set nocompatible
 
 let mapleader = ','
 
-
 set shiftround
 
 set path=**
@@ -29,6 +28,9 @@ set backspace=indent,eol,start
 
 set autoindent
 set cindent
+set indentkeys-=0#
+set cinkeys-=0#
+set cinoptions=:s,ps,ts,cs
 
 set t_Co=256
 syntax on
