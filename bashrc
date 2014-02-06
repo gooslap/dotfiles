@@ -103,7 +103,7 @@ init_prompt()
     local bg_white='\e[47m'
 
     # FG color must occur first
-    PS1="\[${fg_white}${bg_blue}\] \u \h \w \[${reset}\]  "
+    PS1="\[${fg_yellow}\] \u \h \w \[${reset}\] "
 }
 
 init_prompt
