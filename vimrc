@@ -52,16 +52,14 @@ if has('gui_running')
  
     colorscheme default
 else
-    colorscheme evening
+    colorscheme elflord
 endif
  
- 
-"view directory contents in columns
+"tabular directory listing
 let g:netrw_liststyle=2
  
- 
+"set custom hotkey trigger
 let mapleader = ','
- 
  
 "hide numbers and set toggle key
 set nonumber
@@ -70,7 +68,6 @@ nnoremap <leader>n :set nonumber!<CR>
 "disable wrapping and set toggle key
 set nowrap
 nnoremap <leader>m :set nowrap!<CR>
- 
  
 "file browse directory of current file
 "(new tab)
@@ -88,7 +85,6 @@ nnoremap <leader>d :vsplit %:p:h<CR>
 "(current window)
 nnoremap <leader>f :e %:p:h<CR>
  
- 
 "file browse current working dir
 "(new tab)
 nnoremap <leader>z :tabe .<CR>
@@ -105,14 +101,20 @@ nnoremap <leader>c :vsplit .<CR>
 "(current window)
 nnoremap <leader>v :e .<CR>
  
- 
 "generate ctags in working dir
 nnoremap <leader>t :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ .<CR>
 
-
+"navigate between tabs
 nnoremap <leader>e :tabprevious<CR>
 nnoremap <leader>r :tabnext<CR>
  
+"split current window
 nnoremap <leader>q :vsplit<CR>
 nnoremap <leader>w :split<CR>
  
+"switch between windows
+nnoremap <leader>h <C-W>h<CR>
+nnoremap <leader>j <C-W>j<CR>
+nnoremap <leader>k <C-W>k<CR>
+nnoremap <leader>l <C-W>l<CR>
+
