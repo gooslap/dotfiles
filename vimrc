@@ -106,7 +106,7 @@ nnoremap <leader>j <C-W>j<CR>
 nnoremap <leader>k <C-W>k<CR>
 nnoremap <leader>l <C-W>l<CR>
 
-function FindHeaderSourceOpposite()
+function! FindHeaderSourceOpposite()
     let name = expand("%:t:r")
     let ext = expand("%:e")
     let dir = expand("%:p:h")
@@ -141,7 +141,7 @@ function FindHeaderSourceOpposite()
     return result
 endfunction
 
-function HeaderSourceToggle(view_option)
+function! HeaderSourceToggle(view_option)
     let newfile = FindHeaderSourceOpposite()
     if newfile != ""
         if a:view_option == "hsplit"
@@ -157,7 +157,6 @@ function HeaderSourceToggle(view_option)
             exe "e " . newfile
         else
             echoerr "view_option invalid"
-
         endif
     endif
 endfunction
@@ -172,5 +171,7 @@ nnoremap <leader>3 :call HeaderSourceToggle("vsplit")<CR>
 "current window
 nnoremap <leader>4 :call HeaderSourceToggle("window")<CR>
 
+"select all
+nnoremap <leader>g ggVG
 
 
