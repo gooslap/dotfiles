@@ -164,13 +164,13 @@ endfunction
 
 "toggle header/source file in...
 "new tab
-nnoremap <leader>1 :call HeaderSourceToggle("newtab")
+nnoremap <leader>1 :call HeaderSourceToggle("newtab")<CR>
 "horizontal split
-nnoremap <leader>2 :call HeaderSourceToggle("hsplit")
+nnoremap <leader>2 :call HeaderSourceToggle("hsplit")<CR>
 "vertical split
-nnoremap <leader>3 :call HeaderSourceToggle("vsplit")
+nnoremap <leader>3 :call HeaderSourceToggle("vsplit")<CR>
 "current window
-nnoremap <leader>4 :call HeaderSourceToggle("window")
+nnoremap <leader>4 :call HeaderSourceToggle("window")<CR>
 
 
 
