@@ -69,36 +69,24 @@ nnoremap <leader>n :set nonumber!<CR>
 set nowrap
 nnoremap <leader>m :set nowrap!<CR>
  
-"file browse directory of current file
-"(new tab)
+"file browse directory of current file in...
+"new tab
 nnoremap <leader>a :tabe %:p:h<CR>
- 
-"file browse directory of current file
-"(horizontal split)
+"horizontal split
 nnoremap <leader>s :split %:p:h<CR>
- 
-"file browse directory of current file
-"(vertical split)
+"vertical split
 nnoremap <leader>d :vsplit %:p:h<CR>
- 
-"file browse directory of current file
-"(current window)
+"current window
 nnoremap <leader>f :e %:p:h<CR>
  
-"file browse current working dir
-"(new tab)
+"file browse current working dir in...
+"new tab
 nnoremap <leader>z :tabe .<CR>
- 
-"file browse current working dir
-"(horizontal split)
+"horizontal split
 nnoremap <leader>x :split .<CR>
- 
-"file browse current working dir
-"(vertical split)
+"vertical split
 nnoremap <leader>c :vsplit .<CR>
- 
-"file browse current working dir
-"(current window)
+"current window
 nnoremap <leader>v :e .<CR>
  
 "generate ctags in working dir
@@ -109,12 +97,80 @@ nnoremap <leader>e :tabprevious<CR>
 nnoremap <leader>r :tabnext<CR>
  
 "split current window
-nnoremap <leader>q :vsplit<CR>
-nnoremap <leader>w :split<CR>
+nnoremap <leader>w :vsplit<CR>
+nnoremap <leader>q :split<CR>
  
 "switch between windows
 nnoremap <leader>h <C-W>h<CR>
 nnoremap <leader>j <C-W>j<CR>
 nnoremap <leader>k <C-W>k<CR>
 nnoremap <leader>l <C-W>l<CR>
+
+function FindHeaderSourceOpposite()
+    let name = expand("%:t:r")
+    let ext = expand("%:e")
+    let dir = expand("%:p:h")
+    let is_header = (ext == "h" || ext == "hpp")
+    let is_source = (ext == "c" || ext == "cpp")
+
+    let result = ""
+    if is_header
+        "search for source
+        let cpp_file = findfile(name . ".cpp", dir)
+        let c_file = findfile(name . ".c", dir)
+
+        if cpp_file != ""
+            let result = cpp_file
+        else
+            let result = c_file
+        endif
+    elseif is_source
+        "search for header
+        let hpp_file = findfile(name . ".hpp", dir)
+        let h_file = findfile(name . ".h", dir)
+
+        if hpp_file != ""
+            let result = hpp_file
+        else
+            let result = h_file
+        endif
+    else
+        echo expand("%:p:t") . " is not a c/c++ source or header file"
+    endif
+
+    return result
+endfunction
+
+function HeaderSourceToggle(view_option)
+    let newfile = FindHeaderSourceOpposite()
+    if newfile != ""
+        if a:view_option == "hsplit"
+            exe "split " . newfile
+
+        elseif a:view_option == "vsplit"
+            exe "vsplit " . newfile
+
+        elseif a:view_option == "newtab"
+            exe "tabe " . newfile
+
+        elseif a:view_option == "window"
+            exe "e " . newfile
+        else
+            echoerr "view_option invalid"
+
+        endif
+    endif
+endfunction
+
+"toggle header/source file in...
+"new tab
+nnoremap <leader>1 :call HeaderSourceToggle("newtab")
+"horizontal split
+nnoremap <leader>2 :call HeaderSourceToggle("hsplit")
+"vertical split
+nnoremap <leader>3 :call HeaderSourceToggle("vsplit")
+"current window
+nnoremap <leader>4 :call HeaderSourceToggle("window")
+
+
 
