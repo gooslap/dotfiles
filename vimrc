@@ -171,12 +171,22 @@ nnoremap <leader>3 :call HeaderSourceToggle("vsplit")<CR>
 "current window
 nnoremap <leader>4 :call HeaderSourceToggle("window")<CR>
 
+"open w3m and navigate to...
+"stack overflow
+nnoremap <leader>5 :!w3m stackoverflow.com<CR>
+"cplusplus.com
+nnoremap <leader>6 :!w3m cplusplus.com<CR>
+"cppreference.com
+nnoremap <leader>7 :!w3m cppreference.com<CR>
+"boost.org
+nnoremap <leader>8 :!w3m boost.org<CR>
+
 "select all
 nnoremap <leader>g ggVG
 
 "give syntax highlighting to unknown file types
-"note that the &ft == 'cpp' is necessary when toggling source/header
-"with headers that have no extension
+"note that the &ft == 'cpp' is necessary when toggling an already-loaded
+"header that has no extension
 au BufNewFile,BufRead * if &ft == "" || &ft == "cpp" | set ft=cpp | endif
 
 set t_Co=256
