@@ -175,8 +175,9 @@ nnoremap <leader>4 :call HeaderSourceToggle("window")<CR>
 nnoremap <leader>g ggVG
 
 "give syntax highlighting to unknown file types
-au BufNewFile,BufRead * if &ft == "" | set ft=cpp | endif
-
+"note that the &ft == 'cpp' is necessary when toggling source/header
+"with headers that have no extension
+au BufNewFile,BufRead * if &ft == "" || &ft == "cpp" | set ft=cpp | endif
 
 set t_Co=256
 syntax on
