@@ -3,7 +3,6 @@
 # Installs dotfiles into target location.
 #
 
-readonly PROGNAME=$(basename $0)
 
 usage()
 {
