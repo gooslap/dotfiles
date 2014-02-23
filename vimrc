@@ -36,7 +36,22 @@ set showmatch
 set matchtime=2
  
 set wildmode=longest,list,full
- 
+
+set statusline=
+set statusline+=%1*\[%n]                                  "buffer number
+set statusline+=%2*\ %<%F\                                "file path
+set statusline+=%1*\ %y\                                  "file type
+set statusline+=%1*\ %{''.(&fenc!=''?&fenc:&enc).''}      "encoding
+set statusline+=%1*\ %{(&bomb?\",BOM\":\"\")}\            "byte order mark encoding
+set statusline+=%1*\ %{&ff}\                              "file format (dos, unix, etc...) 
+set statusline+=%1*\ %=\ %l/%L\                           "line number/total lines
+set statusline+=%1*\ %02c\                                "column number
+set statusline+=%2*\ %m%r%w\                              "modified, readonly, preview
+set statusline+=%1*\ %3b\ %3B\                            "character byte/hex value
+set statusline+=%2*\ %{strftime(\"%H:%M:%S\")}\           "time
+set statusline+=%1*\ %{strftime(\"%a\ %m/%d/%y\")}\           "date
+set laststatus=2
+
 "tabular directory listing
 let g:netrw_liststyle=2
  
@@ -161,14 +176,17 @@ nnoremap <leader>4 :call HeaderSourceToggle("window")<CR>
 "select all
 nnoremap <leader>g ggVG
 
- 
+"give syntax highlighting to unknown file types
+au BufNewFile,BufRead * if &ft == "" | set ft=cpp | endif
+
+
 set t_Co=256
 syntax on
  
-if has('gui_running')
-    if has('gui_gtk2')
+if has("gui_running")
+    if has("gui_gtk2")
         set guifont=DejaVu\ Sans\ Mono\ 10
-    elseif has('gui_win32')
+    elseif has("gui_win32")
         set guifont=Consolas:h12:cANSI
     endif
     "hide menu and toolbar
