@@ -1,3 +1,10 @@
+
+"*************************************
+"* About:   Vimrc for C++ development
+"* Author:  Mason McParlane <mtm@mm.st>
+"* Version: 1.0
+"*************************************
+
 set nocompatible
  
 set mouse=a
