@@ -2,7 +2,7 @@
 "*************************************
 "* About:   Vimrc for C++ development
 "* Author:  Mason McParlane <mtm@mm.st>
-"* Version: 1.1
+"* Version: 1.2
 "*************************************
 
 set nocompatible
@@ -180,6 +180,9 @@ nnoremap <leader>4 :call HeaderSourceToggle("window")<CR>
 
 "select all
 nnoremap <leader>5 ggVG
+
+"toggle quickfix window
+nnoremap <leader>6 :botright cwindow<CR>
 
 "give syntax highlighting to unknown file types
 "note that the &ft == 'cpp' is necessary when toggling an already-loaded
