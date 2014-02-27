@@ -2,7 +2,7 @@
 "*************************************
 "* About:   Vimrc for C++ development
 "* Author:  Mason McParlane <mtm@mm.st>
-"* Version: 1.0
+"* Version: 1.1
 "*************************************
 
 set nocompatible
@@ -45,16 +45,15 @@ set matchtime=2
 set wildmode=longest,list,full
 
 set statusline=
-set statusline+=%1*\[%n]\                               "buffer number
+set statusline+=%3*\[%n]\                               "buffer number
 set statusline+=%2*%<%F\                                "file path
 set statusline+=%1*%y\                                  "file type
 set statusline+=%1*%{''.(&fenc!=''?&fenc:&enc).''}\     "encoding
 set statusline+=%2*%{(&bomb?\",BOM\":\"\")}\            "byte order mark encoding
-set statusline+=%1*%{&ff}\                              "file format (dos, unix, etc...) 
-set statusline+=%1*%=\ %l/%L\                           "line number/total lines
-set statusline+=%1*%02c\                                "column number
-set statusline+=%2*%m%r%w\                              "modified, readonly, preview
-set statusline+=%1*%3b\ %3B\                            "character byte/hex value
+set statusline+=%1*%{&ff}\                              "file format (dos, unix, etc...)
+set statusline+=%2*%=%m%r%w\                            "modified, readonly, preview
+set statusline+=%1*%2c\                                 "column number
+set statusline+=%1*\ %L\                                "total lines
 set statusline+=%2*%{strftime(\"%H:%M:%S\")}\           "time
 set statusline+=%1*\ %{strftime(\"%a\ %m/%d/%y\")}\     "date
 set laststatus=2
@@ -65,8 +64,8 @@ let g:netrw_liststyle=2
 "set custom hotkey trigger
 let mapleader = ','
  
-"hide numbers and set toggle key
-set nonumber
+"show numbers and set toggle key
+set number
 nnoremap <leader>n :set nonumber!<CR>
  
 "disable wrapping and set toggle key
@@ -178,18 +177,9 @@ nnoremap <leader>3 :call HeaderSourceToggle("vsplit")<CR>
 "current window
 nnoremap <leader>4 :call HeaderSourceToggle("window")<CR>
 
-"open w3m and navigate to...
-"stack overflow
-nnoremap <leader>5 :!w3m stackoverflow.com<CR>
-"cplusplus.com
-nnoremap <leader>6 :!w3m cplusplus.com<CR>
-"cppreference.com
-nnoremap <leader>7 :!w3m cppreference.com<CR>
-"boost.org
-nnoremap <leader>8 :!w3m boost.org<CR>
 
 "select all
-nnoremap <leader>g ggVG
+nnoremap <leader>5 ggVG
 
 "give syntax highlighting to unknown file types
 "note that the &ft == 'cpp' is necessary when toggling an already-loaded
