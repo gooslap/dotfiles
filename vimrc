@@ -7,7 +7,7 @@
 
 set nocompatible
  
-set mouse=a
+"set mouse=a
  
 set path=**
  
@@ -357,7 +357,7 @@ if !has("gui_running") && v:version >= 700
     hi SpellRare        cterm=NONE      ctermfg=NONE    ctermbg=228
     hi SpellLocal       cterm=NONE      ctermfg=NONE    ctermbg=224
     hi SpellCap         cterm=NONE      ctermfg=NONE    ctermbg=145
-    hi MatchParen       cterm=NONE      ctermfg=187     ctermbg=22
+    "hi MatchParen       cterm=NONE      ctermfg=187     ctermbg=22
     hi TabLine          cterm=NONE      ctermfg=187     ctermbg=22
     hi TabLineSel       cterm=NONE      ctermfg=187     ctermbg=30
     hi TabLineFill      cterm=NONE      ctermfg=187     ctermbg=58
@@ -372,7 +372,7 @@ if has("gui_running") && v:version >= 700
     hi SpellRare        gui=NONE        guifg=NONE      guibg=#ffff87
     hi SpellLocal       gui=NONE        guifg=NONE      guibg=#ffd7d7
     hi SpellCap         gui=NONE        guifg=NONE      guibg=#afafaf
-    hi MatchParen       gui=NONE        guifg=#d7d7af   guibg=#005f00
+    "hi MatchParen       gui=NONE        guifg=#d7d7af   guibg=#005f00
     hi TabLine          gui=NONE        guifg=#d7d7af   guibg=#005f00
     hi TabLineSel       gui=NONE        guifg=#d7d7af   guibg=#008787
     hi TabLineFill      gui=NONE        guifg=#d7d7af   guibg=#5f5f00
